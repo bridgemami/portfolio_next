@@ -1,6 +1,8 @@
-
+import HomeComponent from "./components/HomeComponent/HomeComponent";
 export default function Home() {
   return (
-    <div> Hello</div>
+    <main className="">
+      <HomeComponent />
+    </main>
   );
 }
