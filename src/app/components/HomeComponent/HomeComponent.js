@@ -2,13 +2,142 @@ import React from "react";
 import { Hind } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { nanoid } from "nanoid";
+import { useState } from "react";
+import {
+  DiHtml5,
+  DiCss3,
+  DiSass,
+  DiReact,
+  DiWordpress,
+  DiGit,
+  DiGithubBadge,
+  DiResponsive,
+} from "react-icons/di";
+import { VscJson } from "react-icons/vsc";
+import { IoLogoJavascript } from "react-icons/io5";
+import { FaBootstrap } from "react-icons/fa6";
+import { FaUniversalAccess } from "react-icons/fa";
+import {
+  SiOpenapiinitiative,
+  SiNextdotjs,
+  SiFirebase,
+  SiTypescript,
+  SiTailwindcss,
+} from "react-icons/si";
 
 const hind = Hind({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
 });
 
+let settings = {
+  infinite: true,
+  slidesToShow: 6,
+  slidesToScroll: 1,
+  speed: 2000,
+  arrows: false,
+  autoplay: true,
+  autoplaySpeed: 2000,
+  loop: true,
+  cssEase: "linear",
+  responsive: [
+    {
+      breakpoint: 1760,
+      settings: {
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 1460,
+      settings: {
+        slidesToShow: 6,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 1290,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 1100,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 1024,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+      },
+    },
+
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+        initialSlide: 1,
+      },
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+};
+
 export default function HomeComponent() {
+  const [skills, setSkills] = useState([
+    { icon: <DiHtml5 />, title: "HTML5" },
+    { icon: <DiCss3 />, title: "CSS3" },
+    { icon: <IoLogoJavascript />, title: "javascript + ES6" },
+    { icon: <SiTypescript />, title: "typescript" },
+    { icon: <DiSass />, title: "SASS" },
+    { icon: <VscJson />, title: "JSON" },
+    { icon: <SiOpenapiinitiative />, title: "OPEN APIS" },
+    { icon: <FaBootstrap />, title: "bootstrap 5" },
+    { icon: <SiTailwindcss />, title: "tailwind css" },
+    { icon: <DiReact />, title: "react" },
+    { icon: <SiNextdotjs />, title: "next.js" },
+    { icon: <SiFirebase />, title: "firebase" },
+    { icon: <DiWordpress />, title: "wordpress" },
+    { icon: <DiGit />, title: "git" },
+    { icon: <DiGithubBadge />, title: "github" },
+    { icon: <FaUniversalAccess />, title: "Accessibility" },
+    { icon: <DiResponsive />, title: "Responsive design" },
+  ]);
   return (
     <>
       <div
@@ -57,15 +186,16 @@ export default function HomeComponent() {
                 </div>
               </div>
             </div>
-            {/*implemeting the profile image*/}
-            <div className="md:col-span-7 col-span-12 md:pt-[130px] pt-[50px] md:bg-transparent bg-[#d9eef7]">
+            {/*implementing the profile image*/}
+            <div className=" md:col-span-7 col-span-12 md:pt-[130px] pt-[50px] md:bg-transparent bg-[#d9eef7]">
               <div
                 className="m-auto container"
                 style={{ width: "100%", height: "100%" }}
               >
                 <Image
-                  alt="Full-Stack Developer"
-                  src="/logos_and_photos/DSC06519-cropped_300px.webp"
+                  className="rounded-xl mx-auto block"
+                  alt="Michael's Headshot"
+                  src="/logos_and_photos/DSC06519-cropped_500px.webp"
                   decoding="async"
                   data-nimg="intrinsic"
                   width={0}
@@ -76,16 +206,23 @@ export default function HomeComponent() {
               </div>
             </div>
           </div>
-
-          <div className="container m-auto absolute">
-            <div className="px-3">
-              <div
-                className="relative max-w-sm bottom-[70px] md:max-w-xl lg:max-w-5xl xl:max-w-6xl lg:px-14 px-5 overflow-auto mx-auto bg-white rounded-2xl z-20 "
-                style={{
-                  boxShadow: "#48AFDE -10px 25px 50px 10px",
-                }}
-              ></div>
-            </div>
+          <div className="lg:py-10 py-10 md:py-6 cursor-all-scroll">
+            <Slider {...settings}>
+              {skills.map((skill) => {
+                return (
+                  <div
+                    className="flex justify-center items-center h-12"
+                    key={nanoid}
+                  >
+                    {React.cloneElement(skill.icon, {
+                      size: 50, // Adjust size if needed
+                      className:
+                        "grayscale opacity-30 hover:grayscale-0 hover:opacity-100 cursor-pointer",
+                    })}
+                  </div>
+                );
+              })}
+            </Slider>
           </div>
         </div>
       </div>
