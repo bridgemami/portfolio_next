@@ -37,6 +37,7 @@ export default function Header() {
           setSelectedIndex1={setSelectedIndex1}
         />
       </div>
+      {/* alignItems: "center"  padding: "20px",*/}
       <header
         className={`${
           isScrolled ? "headerShow" : ""
@@ -44,17 +45,17 @@ export default function Header() {
         style={{
           backgroundColor: isScrolled ? "black" : "transparent",
           color: "white",
-          padding: "20px",
+
           display: "flex",
           justifyContent: "space-between",
-          alignItems: "center",
           boxShadow: "0 1px 5px rgba(0, 0, 0, 0.1)",
         }}
       >
         <div className="relative">
+          {/* absolute position for the div below */}
           <div
             onClick={openDrawer}
-            className="z-30 absolute cursor-pointer w-14 h-14 lg:w-24 lg:h-24 bg-[#48AFDE] flex justify-center items-center rounded-br-3xl"
+            className="z-30 cursor-pointer w-14 h-14 lg:w-24 lg:h-24 bg-[#48AFDE] flex justify-center items-center rounded-br-3xl"
           >
             <div className="relative w-7 lg:w-10 h-7 lg:h-10 flex justify-center items-center">
               <Image

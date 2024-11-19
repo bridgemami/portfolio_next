@@ -149,6 +149,7 @@ export default function HomeComponent() {
           maxHeight: "1200px",
           height: "100%",
           width: "100%",
+          zIndex: "100",
         }}
       >
         <div className="container m-auto ">
